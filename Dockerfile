@@ -2,12 +2,12 @@ FROM python:3.10-slim
 
 RUN useradd -m appuser
 USER appuser
-WORKDIR /home/appuser/
+WORKDIR /opt/render/
 
-ENV PATH="/home/appuser/.local/bin:$PATH"
+ENV PATH="/opt/render/.local/bin:$PATH"
 RUN pip install --user pipenv
 
-WORKDIR /home/appuser/app
+WORKDIR /opt/render/
 COPY . .
 COPY .env .
 RUN pipenv install --system --deploy --ignore-pipfile
